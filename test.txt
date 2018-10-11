@@ -1,0 +1,83 @@
+for i in range(int(input())):
+  n,d = map(int,input().split())
+  cop=n
+  temp=d
+  while 1:
+    d=str(d)
+    d=list(map(int,d))
+    d=sum(d)
+    if d<10:
+      break
+  co=0
+  if n>9:
+    while 1:
+      co+=1
+      n=str(n)
+      n=list(map(int,n))
+      n=sum(n)
+      if n<10:
+        break
+  if n==1:
+    print('1'+" "+str(co))
+  else:
+    county=0
+    ls2=[0,5,1,6,2,7,3,8,4,9]
+    ls4=[0,7,5,3,1,8,6,4,2,9]
+    ls5=[0,2,4,6,8,1,3,5,7,9]
+    ls7=[0,4,8,3,7,2,6,1,5,9]
+    ls8=[0,8,7,6,5,4,3,2,1,9]
+    last = 10-n
+    if d==2:
+      county= ls2[last]
+      ans = cop + (county * temp)
+    elif d==3:
+      a2 = n+3
+      a3 = n+6
+      if a2>9:
+        ans = cop + temp
+        county = 1
+      elif a3>9:
+        ans = cop + (temp*2)
+        county = 2
+      else:
+        ans = cop
+        county = 0
+    elif d==4:
+      county = ls4[last]
+      ans = cop + (county * temp)
+    elif d==5:
+      county = ls5[last]
+      ans = cop + (county * temp)
+    elif d==6:
+      a2 =n+3
+      a3 =n+6
+      if a2>9:
+        ans = cop + (temp*2)
+        county =2
+      elif a3>9:
+        ans = cop + temp
+        county =1
+      else:
+        ans = cop
+        county =0
+    elif d==7:
+      county = ls7[last]
+      ans = cop + (county * temp)
+    elif d==8:
+      county = ls8[last]
+      ans = cop + (county * temp)
+    elif d==9:
+      county =0
+      ans = cop
+    elif d==1:
+      county = last
+      ans = cop + (county*temp)
+    if ans>9:
+      while 1:
+        county+=1
+        ans = str(ans)
+        ans = list(map(int, ans))
+        ans = sum(ans)
+        if ans<10:
+          break
+    print(str(ans)+" "+str(county))
